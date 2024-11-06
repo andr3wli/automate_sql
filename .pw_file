@@ -1,0 +1,8 @@
+# This file is used to place log in info
+# lines starting with this hashtag will be ignored
+# separate elements with a comma with no space
+# first element is db username - this is for db access
+# second element is db password - this is for db access
+
+# change below ↓
+username,password
