@@ -1,5 +1,5 @@
 #!/usr/bin/perl
-# By: Andrew Li any questions can be sent to andrew.li@gov.bc.ca
+# By: Andrew Li any questions can be sent me via github 
 
 # load perl modules 
 use strict;
@@ -18,8 +18,8 @@ if (@ARGV != 1) {
 my $job_name = $ARGV[0];
 my $parms_folder = catfile $ENV{HOME}, "nm_jobs/parms";
 my $job_path = abs_path($0); # purely for the email messages for aesthetic purposes
-my $current_time = `date +"%H:%M:%S"`; # again this is purely ffor aesthisc purpsoes 
-my $current_date = `date +"%Y-%m-%d"`; # again again, this is puely for aestheic purposes 
+my $current_time = `date +"%H:%M:%S"`; # again this is purely for aesthisc purpsoes 
+my $current_date = `date +"%Y-%m-%d"`; # again again, this is purely for aestheic purposes 
 my $sql_file = catfile($parms_folder, "$job_name.sql");     
 my $mail_file = catfile($parms_folder, "$job_name.mail");
 
@@ -60,7 +60,7 @@ sub failure_message {
     my ($failure_reason) = @_;
     return "$job_path $job_name FAILED \n$failure_reason\n\n Failure Time: $current_time Failure Date: $current_date\n";
 }
-# set as globalk variabel that use thorughout the script, will be populated only when error occurs 
+# set as global variabel that use thorughout the script, will be populated only when error occurs 
 my $mail_body;
 
 my $final_email = sub {
@@ -266,7 +266,7 @@ foreach my $sql (@sql_statements) {
 
 # only if all queries ran successfully- summarize 
 unless ($any_failure) {
-    my $success_subject = "**${job_path} ${job_name} was successful**";
+    my $success_subject = "** ${job_path} ${job_name} was successful **";
     my $script_duration = time() - $script_start_time;
     $success_body .= "Total number of SQL queries executed: $successful_queries\n";
     $success_body .= "Total job duration: " . sprintf("%.2f", $script_duration) . " seconds\n";
